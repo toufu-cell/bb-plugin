@@ -1,0 +1,28 @@
+{
+  "name": "bb-plugin-archive-section",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "bb": "0.50.1",
+    "bbPluginSdk": "0.6.157"
+  },
+  "bb": {
+    "name": "Archive Section",
+    "description": "Adds an Archive row above the sidebar toolbar that opens a list of archived threads.",
+    "branding": {
+      "icon": "Archive"
+    },
+    "server": "./server.ts",
+    "app": "./app.tsx",
+    "skills": []
+  },
+  "devDependencies": {
+    "@get-bb/plugin-sdk": "0.6.157",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "hono": "^4.13.22",
+    "typescript": "^5.7.0"
+  }
+}
