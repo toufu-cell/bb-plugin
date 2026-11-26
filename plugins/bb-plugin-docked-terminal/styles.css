@@ -1,0 +1,122 @@
+/*
+ * Plain CSS, because bb does not scope a plugin's non-utility rules. Every
+ * selector carries the bb-dt- prefix so nothing reaches the rest of the app.
+ * Colors and the font come from bb's own theme variables.
+ */
+
+.bb-dt-dock {
+    position: relative;
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    min-height: 0;
+    border-top: 1px solid var(--border);
+    background: var(--sidebar);
+    color: var(--foreground);
+}
+
+/* A 6px grab area centered on the top border. */
+.bb-dt-resize {
+    position: absolute;
+    top: -4px;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: 6px;
+    cursor: row-resize;
+    touch-action: none;
+}
+
+.bb-dt-resize:hover {
+    background: var(--border);
+}
+
+.bb-dt-resize:focus-visible {
+    background: var(--ring);
+    outline: none;
+}
+
+.bb-dt-header {
+    display: flex;
+    flex: none;
+    gap: 8px;
+    align-items: center;
+    height: 28px;
+    padding: 0 4px 0 12px;
+    font-size: 12px;
+    line-height: 16px;
+    user-select: none;
+}
+
+.bb-dt-title {
+    font-weight: 500;
+}
+
+.bb-dt-note {
+    overflow: hidden;
+    color: var(--muted-foreground);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Start terminal, Retry, and Restart follow bb's outline button. */
+.bb-dt-button {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    height: 22px;
+    padding: 0 8px;
+    border: 1px solid var(--input, var(--border));
+    /* Same as bb's rounded-md, which is --radius minus 2px. */
+    border-radius: calc(var(--radius, 0.5rem) - 2px);
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.bb-dt-button:hover {
+    background: var(--state-hover);
+}
+
+.bb-dt-button:focus-visible {
+    outline: 1px solid var(--ring);
+    outline-offset: 0;
+}
+
+/* The hide button stays a bare icon. */
+.bb-dt-close {
+    justify-content: center;
+    width: 22px;
+    margin-left: auto;
+    padding: 0;
+    border-color: transparent;
+}
+
+.bb-dt-close svg {
+    width: 14px;
+    height: 14px;
+}
+
+.bb-dt-body {
+    flex: 1;
+    min-height: 0;
+    padding: 0 12px 4px;
+    overflow: hidden;
+}
+
+.bb-dt-screen {
+    width: 100%;
+    height: 100%;
+}
+
+/* Keep the empty screen out of sight until a shell is attached. */
+.bb-dt-screen[data-active="false"] {
+    visibility: hidden;
+}
+
+/* xterm.css paints the viewport black; use the dock background instead. */
+.bb-dt-screen .xterm .xterm-viewport {
+    background-color: var(--sidebar) !important;
+}
